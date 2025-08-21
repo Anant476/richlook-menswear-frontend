@@ -1,42 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Rich Look Menswear Design System - Premium Fashion E-commerce */
 
 @layer base {
   :root {
+    /* Core Brand Colors - Deep Navy, Gold, White Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 220 39% 11%;
+    
+    --primary: 220 39% 11%; /* Deep Navy Blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 220 35% 20%;
+    
+    --gold: 45 85% 58%; /* Elegant Gold */
+    --gold-light: 45 90% 70%;
+    --gold-dark: 45 80% 45%;
+    
+    --secondary: 210 17% 96%;
+    --secondary-foreground: 220 39% 11%;
+    
+    --accent: 45 85% 58%; /* Gold as accent */
+    --accent-foreground: 220 39% 11%;
+    
+    --muted: 210 17% 96%;
+    --muted-foreground: 220 13% 46%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 39% 11%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --popover-foreground: 220 39% 11%;
+    
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 45 85% 58%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 8px;
+    
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(220 35% 20%) 50%, hsl(var(--gold)) 100%);
+    
+    /* Luxury Shadows */
+    --shadow-luxury: 0 20px 40px -12px hsl(var(--primary) / 0.25);
+    --shadow-gold: 0 8px 32px -8px hsl(var(--gold) / 0.35);
+    --shadow-card: 0 4px 16px -4px hsl(var(--primary) / 0.1);
+    
+    /* Premium Animations */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +120,85 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Premium Button Styles */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply btn-luxury bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-gold {
+    @apply btn-luxury text-primary font-bold;
+    background: var(--gradient-gold);
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  .btn-outline-gold {
+    @apply btn-luxury border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  /* Premium Card Styles */
+  .card-luxury {
+    @apply bg-card rounded-xl border border-border/50 overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-luxury:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  /* Product Card Hover Effects */
+  .product-card {
+    @apply card-luxury cursor-pointer group;
+  }
+  
+  .product-image {
+    @apply w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110;
+  }
+  
+  /* Typography */
+  .heading-luxury {
+    @apply font-bold tracking-tight;
+  }
+  
+  .text-luxury {
+    @apply font-medium;
+  }
+  
+  /* WhatsApp Float Animation */
+  .whatsapp-float {
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Category Card Hover */
+  .category-card {
+    @apply relative overflow-hidden rounded-xl cursor-pointer group;
+  }
+  
+  .category-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300;
+  }
+  
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
   }
 }
