@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,39 +6,39 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors - Deep Navy, Gold, White Theme */
-    --background: 0 0% 100%;
-    --foreground: 220 39% 11%;
+    /* Updated Brand Colors */
+    --background: 216 50% 97%; /* Soft Off-White #f2f5fa */
+    --foreground: 220 39% 14%; /* Dark Charcoal #222940 */
     
-    --primary: 220 39% 11%; /* Deep Navy Blue */
+    --primary: 220 84% 31%; /* Deep Navy Blue #0f3d91 */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 35% 20%;
+    --primary-light: 220 70% 40%;
     
-    --gold: 45 85% 58%; /* Elegant Gold */
-    --gold-light: 45 90% 70%;
-    --gold-dark: 45 80% 45%;
+    --gold: 36 75% 58%; /* Rich Gold #e09f3e */
+    --gold-light: 36 80% 65%;
+    --gold-dark: 36 70% 45%; /* Burnt Gold #c78220 */
     
     --secondary: 210 17% 96%;
-    --secondary-foreground: 220 39% 11%;
+    --secondary-foreground: 220 39% 14%;
     
-    --accent: 45 85% 58%; /* Gold as accent */
-    --accent-foreground: 220 39% 11%;
+    --accent: 36 75% 58%; /* Rich Gold as accent */
+    --accent-foreground: 220 39% 14%;
     
     --muted: 210 17% 96%;
     --muted-foreground: 220 13% 46%;
     
-    --card: 0 0% 100%;
-    --card-foreground: 220 39% 11%;
+    --card: 0 0% 100%; /* Pure White */
+    --card-foreground: 220 39% 14%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 39% 11%;
+    --popover-foreground: 220 39% 14%;
     
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 4 69% 58%; /* Luxury Red #d9534f */
     --destructive-foreground: 0 0% 98%;
     
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 45 85% 58%;
+    --ring: 36 75% 58%;
 
     --radius: 8px;
     
@@ -120,28 +118,31 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
   }
 }
 
 @layer components {
-  /* Premium Button Styles */
+  /* Premium Button Styles - Pill Shaped */
   .btn-luxury {
-    @apply inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
   }
   
   .btn-primary {
-    @apply btn-luxury bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl;
+    @apply btn-luxury bg-primary text-primary-foreground hover:bg-gold shadow-lg hover:shadow-xl;
   }
   
   .btn-gold {
-    @apply btn-luxury text-primary font-bold;
-    background: var(--gradient-gold);
-    box-shadow: var(--shadow-gold);
+    @apply btn-luxury bg-primary text-primary-foreground font-bold hover:bg-gold;
+    box-shadow: var(--shadow-card);
   }
   
   .btn-gold:hover {
-    transform: translateY(-2px);
     box-shadow: var(--shadow-luxury);
   }
   
@@ -151,13 +152,14 @@
   
   /* Premium Card Styles */
   .card-luxury {
-    @apply bg-card rounded-xl border border-border/50 overflow-hidden transition-all duration-300;
-    box-shadow: var(--shadow-card);
+    @apply bg-card overflow-hidden transition-all duration-300;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 50px -10px rgba(15,61,145,0.15);
   }
   
   .card-luxury:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-luxury);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px -5px rgba(15,61,145,0.25);
   }
   
   /* Product Card Hover Effects */
@@ -166,7 +168,7 @@
   }
   
   .product-image {
-    @apply w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110;
+    @apply w-full h-64 object-cover transition-transform duration-500;
   }
   
   /* Typography */
@@ -178,14 +180,9 @@
     @apply font-medium;
   }
   
-  /* WhatsApp Float Animation */
-  .whatsapp-float {
-    animation: float 2s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  /* Static WhatsApp Button */
+  .whatsapp-static {
+    @apply transition-all duration-300;
   }
   
   /* Category Card Hover */
