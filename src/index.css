@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    /* Updated Brand Colors */
-    --background: 216 50% 97%; /* Soft Off-White #f2f5fa */
-    --foreground: 220 39% 14%; /* Dark Charcoal #222940 */
+    /* New Premium Color Palette */
+    --background: 60 17% 97%; /* Soft Cream White #f9f9f6 */
+    --foreground: 0 0% 12%; /* Primary Text #1f1f1f */
     
-    --primary: 220 84% 31%; /* Deep Navy Blue #0f3d91 */
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 220 70% 40%;
+    --primary: 0 0% 11%; /* Deep Charcoal Black #1c1c1c */
+    --primary-foreground: 60 17% 97%;
+    --primary-light: 259 15% 41%; /* Elegant Taupe #6b5b95 */
     
-    --gold: 36 75% 58%; /* Rich Gold #e09f3e */
-    --gold-light: 36 80% 65%;
-    --gold-dark: 36 70% 45%; /* Burnt Gold #c78220 */
+    --accent: 30 66% 48%; /* Rusty Copper #d17a22 */
+    --accent-light: 30 66% 55%;
+    --accent-dark: 30 66% 40%;
     
-    --secondary: 210 17% 96%;
-    --secondary-foreground: 220 39% 14%;
+    --secondary: 0 0% 90%; /* Warm Gray #e5e5e5 */
+    --secondary-foreground: 0 0% 33%; /* Secondary Text #555555 */
     
-    --accent: 36 75% 58%; /* Rich Gold as accent */
-    --accent-foreground: 220 39% 14%;
+    --accent-green: 75 35% 31%; /* Olive Green #556b2f */
+    --accent-red: 350 65% 47%; /* Off-Red #b23a48 */
     
-    --muted: 210 17% 96%;
-    --muted-foreground: 220 13% 46%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 33%;
     
     --card: 0 0% 100%; /* Pure White */
-    --card-foreground: 220 39% 14%;
+    --card-foreground: 0 0% 12%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 220 39% 14%;
+    --popover-foreground: 0 0% 12%;
     
-    --destructive: 4 69% 58%; /* Luxury Red #d9534f */
+    --destructive: 350 65% 47%; /* Off-Red #b23a48 */
     --destructive-foreground: 0 0% 98%;
     
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 36 75% 58%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 30 66% 48%;
 
     --radius: 8px;
     
     /* Premium Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(220 35% 20%) 50%, hsl(var(--gold)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--accent)) 100%);
     
     /* Luxury Shadows */
     --shadow-luxury: 0 20px 40px -12px hsl(var(--primary) / 0.25);
-    --shadow-gold: 0 8px 32px -8px hsl(var(--gold) / 0.35);
+    --shadow-accent: 0 8px 32px -8px hsl(var(--accent) / 0.35);
     --shadow-card: 0 4px 16px -4px hsl(var(--primary) / 0.1);
     
     /* Premium Animations */
@@ -134,11 +134,11 @@
   }
   
   .btn-primary {
-    @apply btn-luxury bg-primary text-primary-foreground hover:bg-gold shadow-lg hover:shadow-xl;
+    @apply btn-luxury bg-primary text-primary-foreground hover:bg-accent shadow-lg hover:shadow-xl;
   }
   
   .btn-gold {
-    @apply btn-luxury bg-primary text-primary-foreground font-bold hover:bg-gold;
+    @apply btn-luxury bg-primary text-primary-foreground font-bold hover:bg-accent;
     box-shadow: var(--shadow-card);
   }
   
@@ -154,12 +154,12 @@
   .card-luxury {
     @apply bg-card overflow-hidden transition-all duration-300;
     border-radius: 0.75rem;
-    box-shadow: 0 20px 50px -10px rgba(15,61,145,0.15);
+    box-shadow: 0 20px 50px -10px hsl(var(--primary) / 0.15);
   }
   
   .card-luxury:hover {
     transform: translateY(-8px);
-    box-shadow: 0 25px 60px -5px rgba(15,61,145,0.25);
+    box-shadow: 0 25px 60px -5px hsl(var(--primary) / 0.25);
   }
   
   /* Product Card Hover Effects */
